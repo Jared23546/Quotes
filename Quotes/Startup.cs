@@ -32,7 +32,7 @@ namespace Quotes
                 options.UseSqlite(Configuration["ConnectionStrings:BlahConnection"]);
             });
 
-            //services.AddScoped<IQuotesRepository, EFQuotesRepository>();
+            services.AddScoped<IQuotesRepository, EFQuotesRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

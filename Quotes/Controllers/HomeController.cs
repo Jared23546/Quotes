@@ -11,9 +11,9 @@ namespace Quotes.Controllers
 {
     public class HomeController : Controller
     {
-        private QuotesContext repo { get; set; }
+        private IQuotesRepository repo { get; set; }
 
-        public HomeController(QuotesContext temp)
+        public HomeController(IQuotesRepository temp)
         {
             repo = temp;
         }
@@ -39,7 +39,7 @@ namespace Quotes.Controllers
             if (ModelState.IsValid)
             {
                 repo.Add(q);
-                repo.SaveChanges();
+                repo.Save();
                 return RedirectToAction("Index");
             }
             else
@@ -64,7 +64,7 @@ namespace Quotes.Controllers
             if (ModelState.IsValid)
             {
                 repo.Update(q);
-                repo.SaveChanges();
+                
                 return RedirectToAction("Index");
             }
             else
@@ -89,9 +89,11 @@ namespace Quotes.Controllers
         [HttpPost]
         public IActionResult Delete(Quote q)
         {
-            repo.quotes.Remove(q);
-            repo.SaveChanges();
+            repo.Delete(q);
+            
             return RedirectToAction("Index");
         }
+
+        
     }
 }
