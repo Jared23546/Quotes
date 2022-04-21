@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "Quote Details";
+}
+@model Quote
+
+<h1>Details about this quote by @Model.Author</h1>
+<ul>
+    <li>Quote: @Model.TheQuote</li>
+    <li>Author: @Model.Author</li>
+    <li>Date: @Model.Date</li>
+    <li>Subject: @Model.Subject</li>
+    <li>Citations: @Model.Citation</li>
+    <a class="btn btn-primary" asp-controller="Home" asp-action="Edit" asp-route-QuoteId="@Model.QuoteId">Edit</a> </br>
+    <a class="btn btn-primary"asp-controller="Home" asp-action="Delete" asp-route-QuoteId="@Model.QuoteId">Delete</a>
+</ul>
